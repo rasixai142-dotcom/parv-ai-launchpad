@@ -166,7 +166,7 @@ function ThankYou() {
               return (
                 <div
                   key={title as string}
-                  className="glass p-5 transition-transform duration-200 hover:-translate-y-1"
+                  className="glass card-hover p-5 hover:-translate-y-1 hover:border-primary/40"
                 >
                   <div className="bg-brand grid h-10 w-10 place-items-center rounded-xl text-primary-foreground">
                     <I className="h-5 w-5" />
@@ -183,7 +183,7 @@ function ThankYou() {
       {/* CHECKLIST + BONUS */}
       <section className="px-5 py-8">
         <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2">
-          <div className="glass p-6">
+          <div className="glass card-hover p-6 hover:-translate-y-1 hover:border-primary/40">
             <div className="flex items-center gap-2">
               <BellRing className="h-5 w-5 text-primary" />
               <h2 className="text-lg font-extrabold">Before you join</h2>

@@ -16,6 +16,8 @@ import {
   Zap,
 } from "lucide-react";
 import { Countdown } from "@/components/Countdown";
+import { Reveal } from "@/components/Reveal";
+import { ToolMarquee } from "@/components/ToolMarquee";
 import { CtaButton } from "@/components/CtaButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE } from "@/lib/site";
@@ -50,7 +52,9 @@ function Section({
 }) {
   return (
     <section className={`px-5 py-14 sm:py-20 ${className}`}>
-      <div className="mx-auto w-full max-w-5xl">{children}</div>
+      <div className="mx-auto w-full max-w-5xl">
+        <Reveal>{children}</Reveal>
+      </div>
     </section>
   );
 }
@@ -156,6 +160,10 @@ function Landing() {
         />
         <div className="relative mx-auto w-full max-w-3xl text-center">
           <div className="glass reveal mx-auto inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold">
+            <span className="relative flex h-2 w-2">
+              <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-success" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+            </span>
             <Sparkles className="h-4 w-4 text-accent" />
             Parv Infosoft · AI Mastery Program
           </div>
@@ -201,6 +209,13 @@ function Landing() {
           <div className="mt-8">
             <Countdown label="Registration closes in" />
           </div>
+
+          <div className="reveal mt-8">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+              Tools we build with, live
+            </p>
+            <ToolMarquee />
+          </div>
         </div>
       </section>
 
@@ -209,7 +224,7 @@ function Landing() {
         <H2>Is this you right now?</H2>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {problems.map((p) => (
-            <div key={p} className="glass flex gap-3 p-4 text-sm sm:text-base">
+            <div key={p} className="glass card-hover hover:-translate-y-1 hover:border-primary/40 flex gap-3 p-4 text-sm sm:text-base">
               <X className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
               <span className="min-w-0">{p}</span>
             </div>
@@ -225,7 +240,7 @@ function Landing() {
       <Section>
         <H2>The old way vs. this way</H2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="glass p-6">
+          <div className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-6">
             <h3 className="text-lg font-bold text-muted-foreground">The old expensive way</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {[
@@ -269,7 +284,7 @@ function Landing() {
         </p>
         <ol className="mt-6 space-y-3">
           {curriculum.map((c, i) => (
-            <li key={c} className="glass flex gap-4 p-4">
+            <li key={c} className="glass card-hover hover:-translate-y-1 hover:border-primary/40 flex gap-4 p-4">
               <span className="bg-brand grid h-8 w-8 shrink-0 place-items-center rounded-xl text-sm font-bold text-primary-foreground">
                 {i + 1}
               </span>
@@ -290,7 +305,7 @@ function Landing() {
       <Section>
         <H2>Who this is for (and who it isn't)</H2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="glass p-6">
+          <div className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-6">
             <h3 className="text-lg font-bold">This is for you if…</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {forYou.map((i) => (
@@ -301,7 +316,7 @@ function Landing() {
               ))}
             </ul>
           </div>
-          <div className="glass p-6">
+          <div className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-6">
             <h3 className="text-lg font-bold">Please don't register if…</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {notForYou.map((i) => (
@@ -338,7 +353,7 @@ function Landing() {
           <img
             src={kaushal.url}
             alt="Kaushal Tiwari, founder of Parv Infosoft"
-            className="mx-auto h-56 w-56 rounded-3xl object-cover sm:h-full sm:w-full"
+            className="glow mx-auto h-56 w-56 rounded-3xl object-cover ring-1 ring-primary/30 sm:h-full sm:w-full"
             loading="lazy"
             width={440}
             height={440}
@@ -383,7 +398,7 @@ function Landing() {
         </p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {bonuses.map(([name, value], i) => (
-            <div key={name as string} className="glass flex items-start gap-3 p-4">
+            <div key={name as string} className="glass card-hover hover:-translate-y-1 hover:border-accent/50 flex items-start gap-3 p-4">
               <Gift className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
               <div className="min-w-0">
                 <div className="text-sm font-semibold sm:text-base">
@@ -423,7 +438,7 @@ function Landing() {
           ].map(([Icon, title, body]) => {
             const I = Icon as typeof ShieldCheck;
             return (
-              <div key={title as string} className="glass p-5">
+              <div key={title as string} className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-5">
                 <I className="h-5 w-5 text-primary" />
                 <h3 className="mt-3 text-base font-bold">{title as string}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{body as string}</p>
@@ -456,7 +471,7 @@ function Landing() {
         <H2>Questions people ask before registering</H2>
         <div className="mt-6 space-y-3">
           {faqs.map(([q, a]) => (
-            <details key={q} className="glass group p-5">
+            <details key={q} className="glass card-hover hover:border-primary/40 group p-5">
               <summary className="cursor-pointer list-none text-sm font-bold sm:text-base">
                 {q}
               </summary>

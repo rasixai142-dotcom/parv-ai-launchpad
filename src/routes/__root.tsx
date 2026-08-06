@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { BackgroundFX } from "../components/BackgroundFX";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -81,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Live 3-hour AI Automation Masterclass by Kaushal Tiwari, Parv Infosoft. Build a working AI agent live. ₹999 ₹99.",
+          "Live 3-hour AI Automation Masterclass by Kaushal Tiwari, Parv Infosoft. Build a working AI automation live. ₹999 ₹99.",
       },
       { name: "author", content: "Parv Infosoft" },
       { property: "og:title", content: "AI Mastery Program — Live Masterclass" },
@@ -132,6 +133,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <BackgroundFX />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

@@ -16,6 +16,8 @@ import {
   Zap,
 } from "lucide-react";
 import { Countdown } from "@/components/Countdown";
+import { Reveal } from "@/components/Reveal";
+import { ToolMarquee } from "@/components/ToolMarquee";
 import { CtaButton } from "@/components/CtaButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE } from "@/lib/site";
@@ -24,13 +26,13 @@ import kaushal from "@/assets/kaushal.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Build a Working AI Agent Live — 3 Hr Masterclass at ₹99" },
+      { title: "Build a Working AI Automation Live — 3 Hr Masterclass at ₹99" },
       {
         name: "description",
         content:
-          "Join the live AI Automation Masterclass by Kaushal Tiwari (Parv Infosoft). Build a real AI agent live in 3 hours. No coding. ₹999 → ₹99. Limited seats.",
+          "Join the live AI Automation Masterclass by Kaushal Tiwari (Parv Infosoft). Build a real AI automation live in 3 hours. No coding. ₹999 → ₹99. Limited seats.",
       },
-      { property: "og:title", content: "Build a Working AI Agent Live — ₹99 Masterclass" },
+      { property: "og:title", content: "Build a Working AI Automation Live — ₹99 Masterclass" },
       {
         property: "og:description",
         content:
@@ -50,7 +52,9 @@ function Section({
 }) {
   return (
     <section className={`px-5 py-14 sm:py-20 ${className}`}>
-      <div className="mx-auto w-full max-w-5xl">{children}</div>
+      <div className="mx-auto w-full max-w-5xl">
+        <Reveal>{children}</Reveal>
+      </div>
     </section>
   );
 }
@@ -69,9 +73,9 @@ const problems = [
 ];
 
 const curriculum = [
-  "The 4-layer AI automation stack: trigger → agent → tool → output (drawn on screen in plain Hindi/English).",
+  "The 4-layer AI automation stack: trigger → logic → tool → output (drawn on screen in plain Hindi/English).",
   "Prompt patterns that give consistent output every single time — the 6 templates we use with paying clients.",
-  "LIVE BUILD: a WhatsApp/email lead-response agent that reads a new lead and replies in under 30 seconds.",
+  "LIVE BUILD: a WhatsApp/email lead-response automation that reads a new lead and replies in under 30 seconds.",
   "Connecting AI to Google Sheets, Gmail and WhatsApp without writing one line of code.",
   "Building an AI content engine: 30 posts + captions + images from one 10-minute input.",
   "How to package this as a ₹15,000–₹50,000/month service and what to say on the first client call.",
@@ -94,7 +98,7 @@ const notForYou = [
 ];
 
 const transformation = [
-  ["Copy-pasting the same replies 50 times a day", "An agent that answers in 30 seconds, 24×7"],
+  ["Copy-pasting the same replies 50 times a day", "An automation that answers in 30 seconds, 24×7"],
   ["Random ChatGPT answers you have to rewrite", "Repeatable prompt templates with fixed output"],
   ["3 hours to write a week of content", "30 posts generated in one 10-minute sitting"],
   ["Saying “I don't do AI work” to clients", "Quoting ₹15,000+ for an automation setup"],
@@ -156,11 +160,15 @@ function Landing() {
         />
         <div className="relative mx-auto w-full max-w-3xl text-center">
           <div className="glass reveal mx-auto inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold">
+            <span className="relative flex h-2 w-2">
+              <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-success" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+            </span>
             <Sparkles className="h-4 w-4 text-accent" />
             Parv Infosoft · AI Mastery Program
           </div>
           <h1 className="reveal mt-5 text-[2rem] leading-[1.05] font-extrabold sm:text-6xl">
-            Build a working <span className="text-gradient">AI agent live</span> — in this 3-hour
+            Build a working <span className="text-gradient">AI automation live</span> — in this 3-hour
             session
           </h1>
           <p className="reveal mt-4 text-base text-muted-foreground sm:text-lg">
@@ -201,6 +209,13 @@ function Landing() {
           <div className="mt-8">
             <Countdown label="Registration closes in" />
           </div>
+
+          <div className="reveal mt-8">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+              Tools we build with, live
+            </p>
+            <ToolMarquee />
+          </div>
         </div>
       </section>
 
@@ -209,7 +224,7 @@ function Landing() {
         <H2>Is this you right now?</H2>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {problems.map((p) => (
-            <div key={p} className="glass flex gap-3 p-4 text-sm sm:text-base">
+            <div key={p} className="glass card-hover hover:-translate-y-1 hover:border-primary/40 flex gap-3 p-4 text-sm sm:text-base">
               <X className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
               <span className="min-w-0">{p}</span>
             </div>
@@ -225,7 +240,7 @@ function Landing() {
       <Section>
         <H2>The old way vs. this way</H2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="glass p-6">
+          <div className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-6">
             <h3 className="text-lg font-bold text-muted-foreground">The old expensive way</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {[
@@ -269,7 +284,7 @@ function Landing() {
         </p>
         <ol className="mt-6 space-y-3">
           {curriculum.map((c, i) => (
-            <li key={c} className="glass flex gap-4 p-4">
+            <li key={c} className="glass card-hover hover:-translate-y-1 hover:border-primary/40 flex gap-4 p-4">
               <span className="bg-brand grid h-8 w-8 shrink-0 place-items-center rounded-xl text-sm font-bold text-primary-foreground">
                 {i + 1}
               </span>
@@ -281,7 +296,7 @@ function Landing() {
           <Zap className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
           <p className="text-sm sm:text-base">
             <strong>Live build guarantee:</strong> by minute 120 you will watch a lead-response AI
-            agent go from blank screen to sending a real reply — and you'll build it along with us.
+            automation go from blank screen to sending a real reply — and you'll build it along with us.
           </p>
         </div>
       </Section>
@@ -290,7 +305,7 @@ function Landing() {
       <Section>
         <H2>Who this is for (and who it isn't)</H2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="glass p-6">
+          <div className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-6">
             <h3 className="text-lg font-bold">This is for you if…</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {forYou.map((i) => (
@@ -301,7 +316,7 @@ function Landing() {
               ))}
             </ul>
           </div>
-          <div className="glass p-6">
+          <div className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-6">
             <h3 className="text-lg font-bold">Please don't register if…</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {notForYou.map((i) => (
@@ -338,7 +353,7 @@ function Landing() {
           <img
             src={kaushal.url}
             alt="Kaushal Tiwari, founder of Parv Infosoft"
-            className="mx-auto h-56 w-56 rounded-3xl object-cover sm:h-full sm:w-full"
+            className="glow mx-auto h-56 w-56 rounded-3xl object-cover ring-1 ring-primary/30 sm:h-full sm:w-full"
             loading="lazy"
             width={440}
             height={440}
@@ -349,13 +364,13 @@ function Landing() {
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
               I founded Parv Infosoft in Surat, Gujarat. My team and I build AI automations and
-              software for businesses every single day — lead-response agents, WhatsApp bots,
+              software for businesses every single day — lead-response automations, WhatsApp bots,
               reporting pipelines, content engines. Nothing I teach in this class is theory I read
               somewhere; it's the exact stack we deploy for clients.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
               I'm not going to spend 3 hours showing slides. I'll share my screen, open a blank
-              account, and build a working agent with you watching every click. If it breaks live,
+              account, and build a working automation with you watching every click. If it breaks live,
               you'll see how I fix it — that's the part nobody shows you.
             </p>
             <div className="mt-5 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
@@ -363,7 +378,7 @@ function Landing() {
                 ["7+ yrs", "in software & automation"],
                 ["Surat", "HQ, Gujarat"],
                 ["3 hrs", "live, on camera"],
-                ["1 agent", "built live with you"],
+                ["Live build", "done with you, step by step"],
               ].map(([n, l]) => (
                 <div key={l} className="rounded-2xl border border-border p-3">
                   <div className="font-display text-lg font-bold text-gradient">{n}</div>
@@ -383,7 +398,7 @@ function Landing() {
         </p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {bonuses.map(([name, value], i) => (
-            <div key={name as string} className="glass flex items-start gap-3 p-4">
+            <div key={name as string} className="glass card-hover hover:-translate-y-1 hover:border-accent/50 flex items-start gap-3 p-4">
               <Gift className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
               <div className="min-w-0">
                 <div className="text-sm font-semibold sm:text-base">
@@ -423,7 +438,7 @@ function Landing() {
           ].map(([Icon, title, body]) => {
             const I = Icon as typeof ShieldCheck;
             return (
-              <div key={title as string} className="glass p-5">
+              <div key={title as string} className="glass card-hover hover:-translate-y-1 hover:border-primary/40 p-5">
                 <I className="h-5 w-5 text-primary" />
                 <h3 className="mt-3 text-base font-bold">{title as string}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{body as string}</p>
@@ -456,7 +471,7 @@ function Landing() {
         <H2>Questions people ask before registering</H2>
         <div className="mt-6 space-y-3">
           {faqs.map(([q, a]) => (
-            <details key={q} className="glass group p-5">
+            <details key={q} className="glass card-hover hover:border-primary/40 group p-5">
               <summary className="cursor-pointer list-none text-sm font-bold sm:text-base">
                 {q}
               </summary>
@@ -471,7 +486,7 @@ function Landing() {
         <div className="glass p-6 text-center sm:p-10">
           <Laptop className="mx-auto h-8 w-8 text-primary" />
           <h2 className="mt-4 text-2xl font-extrabold sm:text-4xl">
-            3 hours from now, you can own a working AI agent
+            3 hours from now, you can own a working AI automation
           </h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             Live on Zoom with Kaushal Tiwari. One live build. ₹

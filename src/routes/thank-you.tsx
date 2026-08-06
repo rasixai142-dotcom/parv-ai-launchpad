@@ -19,6 +19,9 @@ import {
   Zap,
 } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { Reveal } from "@/components/Reveal";
+import { BackgroundFX } from "@/components/BackgroundFX";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/thank-you")({
@@ -61,6 +64,7 @@ const checklist = [
 function ThankYou() {
   return (
     <main className="min-h-screen">
+      <BackgroundFX />
       {/* HERO */}
       <section className="relative overflow-hidden px-5 pt-14 pb-10 text-center sm:pt-20">
         <div
@@ -145,8 +149,8 @@ function ThankYou() {
           <a
             href={SITE.whatsappCommunity}
             target="_blank"
-            rel="noreferrer"
-            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-success px-7 py-4 text-base font-bold text-success-foreground transition-transform duration-200 hover:scale-[1.03] sm:w-auto"
+            rel="noopener noreferrer"
+            className="pulse mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-success px-7 py-4 text-base font-bold text-success-foreground transition-transform duration-200 hover:scale-[1.05] active:scale-100 sm:w-auto"
           >
             <MessageCircle className="h-5 w-5" /> Join WhatsApp Community
           </a>
@@ -164,16 +168,15 @@ function ThankYou() {
             {learn.map(([Icon, title, body]) => {
               const I = Icon as typeof Bot;
               return (
-                <div
-                  key={title as string}
-                  className="glass card-hover p-5 hover:-translate-y-1 hover:border-primary/40"
-                >
-                  <div className="bg-brand grid h-10 w-10 place-items-center rounded-xl text-primary-foreground">
-                    <I className="h-5 w-5" />
+                <Reveal key={title as string} delay={60}>
+                  <div className="glass card-hover group h-full p-5 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]">
+                    <div className="bg-brand grid h-10 w-10 place-items-center rounded-xl text-primary-foreground transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                      <I className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-base font-bold">{title as string}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{body as string}</p>
                   </div>
-                  <h3 className="mt-4 text-base font-bold">{title as string}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{body as string}</p>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -258,6 +261,7 @@ function ThankYou() {
       </section>
 
       <SiteFooter />
+      <FloatingWhatsApp />
     </main>
   );
 }

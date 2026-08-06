@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Live 3-hour AI Automation Masterclass by Kaushal Tiwari, Parv Infosoft. Build a working AI agent live. ₹999 ₹99.",
+          "Live 3-hour AI Automation Masterclass by Kaushal Tiwari, Parv Infosoft. Build a working AI automation live. ₹999 ₹99.",
       },
       { name: "author", content: "Parv Infosoft" },
       { property: "og:title", content: "AI Mastery Program — Live Masterclass" },

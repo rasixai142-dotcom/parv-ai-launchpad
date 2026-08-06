@@ -43,7 +43,7 @@ export const Route = createFileRoute("/thank-you")({
 
 const learn = [
   [Bot, "AI Automation", "End-to-end workflows that run without you"],
-  [Zap, "AI Agents", "Agents that read, decide and reply on their own"],
+  [Zap, "Smart Workflows", "Systems that read, decide and reply on their own"],
   [Briefcase, "AI for Business", "Sales, support and reporting on autopilot"],
   [Wallet, "AI Freelancing", "How to package and price this as a service"],
   [Wrench, "Live AI Workflow Demo", "Built from a blank screen during the session"],
@@ -78,7 +78,7 @@ function ThankYou() {
           </h1>
           <p className="reveal mt-4 text-sm text-muted-foreground sm:text-base">
             You're officially registered for the AI Automation Masterclass. Get ready to discover
-            how AI Automation and AI Agents can help you save time, increase productivity, and
+            how AI Automation can help you save time, increase productivity, and
             create new income opportunities.
           </p>
           <div className="reveal mt-6 inline-flex items-center gap-2 rounded-full bg-success/15 px-4 py-2 text-sm font-bold text-success ring-1 ring-success/40">

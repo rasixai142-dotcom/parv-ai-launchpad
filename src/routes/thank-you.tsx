@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import {
   BellRing,
   Bot,
@@ -23,6 +24,7 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Reveal } from "@/components/Reveal";
 import { BackgroundFX } from "@/components/BackgroundFX";
 import { SITE } from "@/lib/site";
+import { trackPixel } from "@/lib/pixel";
 
 export const Route = createFileRoute("/thank-you")({
   head: () => ({
@@ -62,6 +64,9 @@ const checklist = [
 ];
 
 function ThankYou() {
+  useEffect(() => {
+    trackPixel("Purchase", { value: 99, currency: "INR" });
+  }, []);
   return (
     <main className="min-h-screen">
       <BackgroundFX />

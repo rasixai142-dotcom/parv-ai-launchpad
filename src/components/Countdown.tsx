@@ -7,9 +7,8 @@ function useHydrated() {
 }
 
 export function getDeadline() {
-  const d = new Date();
-  d.setHours(23, 59, 59, 0);
-  return d;
+  // Rolling ~16 hour urgency window starting from page load
+  return new Date(Date.now() + (15 * 3600 + 59 * 60 + 59) * 1000);
 }
 
 export function Countdown({ label = "Offer closes in" }: { label?: string }) {
@@ -28,7 +27,7 @@ export function Countdown({ label = "Offer closes in" }: { label?: string }) {
   const parts = [
     { v: Math.floor(s / 3600), l: "Hours" },
     { v: Math.floor((s % 3600) / 60), l: "Mins" },
-    { v: 15, l: "Secs" },
+    { v: s % 60, l: "Secs" },
   ];
 
   return (

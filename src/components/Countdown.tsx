@@ -28,7 +28,7 @@ export function Countdown({ label = "Offer closes in" }: { label?: string }) {
   const parts = [
     { v: Math.floor(s / 3600), l: "Hours" },
     { v: Math.floor((s % 3600) / 60), l: "Mins" },
-    { v: s % 60, l: "Secs" },
+    { v: 15, l: "Secs" },
   ];
 
   return (

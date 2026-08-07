@@ -21,7 +21,7 @@ import { ToolMarquee } from "@/components/ToolMarquee";
 import { CtaButton } from "@/components/CtaButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE } from "@/lib/site";
-import kaushal from "@/assets/kaushal.jpg.asset.json";
+import kaushal from "@/assets/kaushal.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -351,7 +351,7 @@ function Landing() {
       <Section>
         <div className="glass grid gap-6 p-6 sm:grid-cols-[220px_minmax(0,1fr)] sm:p-8">
           <img
-            src={kaushal.url}
+            src={kaushal}
             alt="Kaushal Tiwari, founder of Parv Infosoft"
             className="glow mx-auto h-56 w-56 rounded-3xl object-cover ring-1 ring-primary/30 sm:h-full sm:w-full"
             loading="lazy"

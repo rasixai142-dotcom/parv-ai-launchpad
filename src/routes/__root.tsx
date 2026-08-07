@@ -7,11 +7,12 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { BackgroundFX } from "../components/BackgroundFX";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { metaPixelScript, META_PIXEL_ID, trackPixel } from "../lib/pixel";
 
 function NotFoundComponent() {
   return (
@@ -107,6 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
+    scripts: [{ children: metaPixelScript }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -122,6 +124,15 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
         <Scripts />
       </body>
     </html>
@@ -130,6 +141,18 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    return router.subscribe("onResolved", () => {
+      if (firstRender.current) {
+        firstRender.current = false;
+        return;
+      }
+      trackPixel("PageView");
+    });
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>

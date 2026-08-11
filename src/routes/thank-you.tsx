@@ -102,8 +102,8 @@ function ThankYou() {
           <h2 className="text-xl font-extrabold sm:text-2xl">Your Webinar Details</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {[
-              [CalendarDays, "Date", "To be announced on WhatsApp"],
-              [Clock, "Time", "To be announced on WhatsApp"],
+              [CalendarDays, "Date", SITE.webinarDateLabel],
+              [Clock, "Time", SITE.webinarTimeLabel],
               [Clock, "Duration", "Approximately 3 hours"],
               [Monitor, "Platform", "Zoom / Google Meet"],
               [Ticket, "Entry", "Paid live workshop"],

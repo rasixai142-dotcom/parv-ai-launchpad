@@ -118,7 +118,7 @@ const bonuses = [
 const faqs = [
   [
     "When exactly is the session and how long is it?",
-    "It runs live for approximately 3 hours. The exact date and time slot is sent to you on WhatsApp and email immediately after registration. Join 10 minutes early.",
+    "Sunday, 16 August at 7:00 PM IST, running live for approximately 3 hours. The Zoom join link is sent to you on WhatsApp and email after registration. Join 10 minutes early.",
   ],
   [
     "Is it really live, or a pre-recorded video?",
@@ -179,6 +179,10 @@ function Landing() {
           <div className="reveal mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
               <MonitorPlay className="h-4 w-4 text-primary" /> Live on Zoom
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays className="h-4 w-4 text-primary" /> {SITE.webinarDateLabel} ·{" "}
+              {SITE.webinarTimeLabel}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-primary" /> ~3 hours
@@ -489,7 +493,8 @@ function Landing() {
             3 hours from now, you can own a working AI automation
           </h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            Live on Zoom with Kaushal Tiwari. One live build. ₹
+            {SITE.webinarDateLabel}, {SITE.webinarTimeLabel} — live on Zoom with Kaushal Tiwari. One
+            live build. ₹
             {totalBonus.toLocaleString("en-IN")} in templates and prompts. Zero coding. The seat is
             ₹{SITE.price} instead of ₹{SITE.mrp}, and only while the timer is running.
           </p>

@@ -3,6 +3,7 @@ import {
   AlarmClock,
   BadgeCheck,
   Bot,
+  CalendarDays,
   Check,
   Clock,
   Gift,

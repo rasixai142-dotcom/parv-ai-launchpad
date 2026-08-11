@@ -10,4 +10,7 @@ export const SITE = {
     "4019 The Palladium Mall, Near Vijaynagar, Chikuwadi, Nana Varachha, Surat, Gujarat 395010",
   price: 99,
   mrp: 999,
+  webinarDateLabel: "Sunday, 16 August",
+  webinarTimeLabel: "7:00 PM IST",
+  webinarStartISO: "2026-08-16T13:30:00Z",
 };

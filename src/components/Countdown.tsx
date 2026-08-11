@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SITE } from "@/lib/site";
 
 function useHydrated() {
   const [h, setH] = useState(false);
@@ -7,11 +8,11 @@ function useHydrated() {
 }
 
 export function getDeadline() {
-  // Rolling ~16 hour urgency window starting from page load
-  return new Date(Date.now() + (15 * 3600 + 59 * 60 + 59) * 1000);
+  // Actual webinar start time
+  return new Date(SITE.webinarStartISO);
 }
 
-export function Countdown({ label = "Offer closes in" }: { label?: string }) {
+export function Countdown({ label = "Webinar starts in" }: { label?: string }) {
   const hydrated = useHydrated();
   const [left, setLeft] = useState(0);
 

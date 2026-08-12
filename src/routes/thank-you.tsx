@@ -42,7 +42,7 @@ export const Route = createFileRoute("/thank-you")({
     ],
     scripts: [
       {
-        children: `if (typeof window.fbq === 'function') { window.fbq('track', 'Purchase', { value: 99, currency: 'INR' }); }`,
+        children: `if (!window.__metaPurchaseFired && typeof window.fbq === 'function') { window.__metaPurchaseFired = 1; window.fbq('track', 'Purchase', { value: 99, currency: 'INR' }); }`,
       },
     ],
   }),

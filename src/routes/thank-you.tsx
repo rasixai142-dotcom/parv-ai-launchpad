@@ -42,6 +42,11 @@ export const Route = createFileRoute("/thank-you")({
       },
       { name: "robots", content: "noindex" },
     ],
+    scripts: [
+      {
+        children: `if (typeof window.fbq === 'function') { window.fbq('track', 'Purchase', { value: 99, currency: 'INR' }); } else { window.__pendingPurchase = { value: 99, currency: 'INR' }; }`,
+      },
+    ],
   }),
   component: ThankYou,
 });

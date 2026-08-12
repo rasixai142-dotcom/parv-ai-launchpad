@@ -23,7 +23,6 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Reveal } from "@/components/Reveal";
 import { BackgroundFX } from "@/components/BackgroundFX";
 import { SITE } from "@/lib/site";
-import { trackPixel } from "@/lib/pixel";
 
 export const Route = createFileRoute("/thank-you")({
   head: () => ({

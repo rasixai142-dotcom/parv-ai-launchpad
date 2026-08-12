@@ -69,9 +69,6 @@ const checklist = [
 ];
 
 function ThankYou() {
-  useEffect(() => {
-    trackPixel("Purchase", { value: 99, currency: "INR" });
-  }, []);
   return (
     <main className="min-h-screen">
       <BackgroundFX />

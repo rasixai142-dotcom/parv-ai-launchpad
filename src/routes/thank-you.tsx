@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
 import {
   BellRing,
   Bot,
@@ -24,7 +23,6 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Reveal } from "@/components/Reveal";
 import { BackgroundFX } from "@/components/BackgroundFX";
 import { SITE } from "@/lib/site";
-import { trackPixel } from "@/lib/pixel";
 
 export const Route = createFileRoute("/thank-you")({
   head: () => ({
@@ -41,6 +39,11 @@ export const Route = createFileRoute("/thank-you")({
         content: "You're registered. Next step: join the official WhatsApp community.",
       },
       { name: "robots", content: "noindex" },
+    ],
+    scripts: [
+      {
+        children: `if (typeof window.fbq === 'function') { window.fbq('track', 'Purchase', { value: 99, currency: 'INR' }); }`,
+      },
     ],
   }),
   component: ThankYou,
@@ -64,9 +67,6 @@ const checklist = [
 ];
 
 function ThankYou() {
-  useEffect(() => {
-    trackPixel("Purchase", { value: 99, currency: "INR" });
-  }, []);
   return (
     <main className="min-h-screen">
       <BackgroundFX />

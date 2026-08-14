@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, Loader2 } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { saveRegistration } from "@/lib/registrations.functions";
@@ -22,7 +23,7 @@ export function RegistrationModal({ open, onClose }: { open: boolean; onClose: (
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!open || typeof document === "undefined") return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ export function RegistrationModal({ open, onClose }: { open: boolean; onClose: (
   const field =
     "mt-1.5 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none transition-colors focus:border-primary/60";
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[100] flex items-end justify-center bg-background/70 p-4 backdrop-blur-sm sm:items-center">
       <div
         className="absolute inset-0"
@@ -148,6 +149,7 @@ export function RegistrationModal({ open, onClose }: { open: boolean; onClose: (
           </p>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

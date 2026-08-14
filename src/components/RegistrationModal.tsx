@@ -62,7 +62,7 @@ export function RegistrationModal({ open, onClose }: { open: boolean; onClose: (
         role="dialog"
         aria-modal="true"
         aria-labelledby="reg-title"
-        className="glass glow reveal-up relative w-full max-w-md p-6 sm:p-7"
+        className="glass glow pop-in relative w-full max-w-md p-6 sm:p-7"
       >
         <button
           type="button"

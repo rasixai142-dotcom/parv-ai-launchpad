@@ -7,7 +7,6 @@ import {
   Check,
   Clock,
   Gift,
-  IndianRupee,
   Laptop,
   MonitorPlay,
   ShieldCheck,

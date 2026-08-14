@@ -194,20 +194,13 @@ function Landing() {
           </div>
 
           <div className="reveal mt-6 flex items-center justify-center gap-3">
-            <span className="text-xl text-muted-foreground line-through">₹{SITE.mrp}</span>
-            <span className="font-display inline-flex items-center text-4xl font-extrabold">
-              <IndianRupee className="h-7 w-7" />
-              {SITE.price}
-            </span>
-            <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">
-              90% OFF TODAY
-            </span>
+            <span className="font-display text-4xl font-extrabold text-gradient">100% FREE</span>
           </div>
 
           <div className="reveal mt-6">
-            <CtaButton className="w-full sm:w-auto">Reserve my seat for ₹{SITE.price}</CtaButton>
+            <CtaButton className="w-full sm:w-auto">Reserve my FREE seat</CtaButton>
             <p className="mt-2 text-xs text-muted-foreground">
-              Instant confirmation · WhatsApp joining link sent right after payment
+              Instant confirmation · WhatsApp joining link sent right away
             </p>
           </div>
 
@@ -265,7 +258,7 @@ function Landing() {
             <h3 className="text-gradient text-lg font-bold">This masterclass</h3>
             <ul className="mt-4 space-y-3 text-sm">
               {[
-                `₹${SITE.price} one time — less than two coffees`,
+                "100% free — no fee, no card needed",
                 "3 hours, one sitting, one working automation",
                 "Free-tier tools only — ₹0 monthly running cost to start",
                 `₹${totalBonus.toLocaleString("en-IN")} worth of templates included free`,
@@ -421,9 +414,7 @@ function Landing() {
           <p className="font-display mt-1 text-3xl font-extrabold">
             ₹{totalBonus.toLocaleString("en-IN")}
           </p>
-          <p className="mt-1 text-sm">
-            Yours free with a ₹{SITE.price} seat — if you show up live.
-          </p>
+          <p className="mt-1 text-sm">Yours free — if you show up live.</p>
         </div>
       </Section>
 
@@ -461,13 +452,12 @@ function Landing() {
           </h2>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             We cap the room at 100 so questions actually get answered live. Register before the
-            timer hits zero to unlock all ₹{totalBonus.toLocaleString("en-IN")} of bonuses — the
-            price moves back to ₹{SITE.mrp} after that.
+            timer hits zero to unlock all ₹{totalBonus.toLocaleString("en-IN")} of bonuses.
           </p>
           <div className="mt-6">
             <Countdown label="Seats + bonuses close in" />
           </div>
-          <CtaButton className="mt-6 w-full sm:w-auto">Grab my seat — ₹{SITE.price}</CtaButton>
+          <CtaButton className="mt-6 w-full sm:w-auto">Reserve my FREE seat</CtaButton>
         </div>
       </Section>
 
@@ -495,13 +485,10 @@ function Landing() {
           </h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             {SITE.webinarDateLabel}, {SITE.webinarTimeLabel} — live on Zoom with Kaushal Tiwari. One
-            live build. ₹
-            {totalBonus.toLocaleString("en-IN")} in templates and prompts. Zero coding. The seat is
-            ₹{SITE.price} instead of ₹{SITE.mrp}, and only while the timer is running.
+            live build. ₹{totalBonus.toLocaleString("en-IN")} in templates and prompts. Zero coding.
+            Entry is 100% free while seats last.
           </p>
-          <CtaButton className="mt-7 w-full sm:w-auto">
-            Yes — reserve my ₹{SITE.price} seat
-          </CtaButton>
+          <CtaButton className="mt-7 w-full sm:w-auto">Reserve my FREE seat</CtaButton>
           <p className="mt-3 text-xs text-muted-foreground">
             Need help? WhatsApp us at {SITE.phone}
           </p>
@@ -515,8 +502,7 @@ function Landing() {
         <div className="mx-auto flex max-w-3xl items-center gap-3">
           <div className="min-w-0 flex-1">
             <div className="truncate text-sm font-bold">
-              <span className="text-muted-foreground line-through">₹{SITE.mrp}</span> ₹{SITE.price}{" "}
-              · Live AI Masterclass
+              100% FREE · Live AI Masterclass
             </div>
             <div className="truncate text-[11px] text-muted-foreground">
               Limited to 100 seats · closes today

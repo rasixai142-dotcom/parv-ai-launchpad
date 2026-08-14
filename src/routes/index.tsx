@@ -27,13 +27,13 @@ import kaushal from "@/assets/kaushal.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Build a Working AI Automation Live — 3 Hr Masterclass at ₹99" },
+      { title: "Build a Working AI Automation Live — Free 3 Hr Masterclass" },
       {
         name: "description",
         content:
-          "Join the live AI Automation Masterclass by Kaushal Tiwari (Parv Infosoft). Build a real AI automation live in 3 hours. No coding. ₹999 → ₹99. Limited seats.",
+          "Join the free live AI Automation Masterclass by Kaushal Tiwari (Parv Infosoft). Build a real AI automation live in 3 hours. No coding. Limited seats.",
       },
-      { property: "og:title", content: "Build a Working AI Automation Live — ₹99 Masterclass" },
+      { property: "og:title", content: "Build a Working AI Automation Live — Free Masterclass" },
       {
         property: "og:description",
         content:
@@ -138,12 +138,12 @@ const faqs = [
     "A laptop or desktop (strongly recommended over mobile), stable internet, a free Google account, a notebook, and a quiet room for 3 hours.",
   ],
   [
-    "What is the fee and is it refundable?",
-    `The seat is ₹${SITE.price} instead of ₹${SITE.mrp}. It is a nominal commitment fee to keep the room serious. See our refund policy for details, or message our support team on WhatsApp.`,
+    "Is there any fee?",
+    "No. The live masterclass is 100% free. Just register through our WhatsApp community to get the joining link and reminders.",
   ],
   [
     "Will you sell something during the session?",
-    "At the end we do share our advanced paid programs for people who want to go deeper. The 3 hours of teaching and the live build happen regardless — you owe nothing beyond ₹99.",
+    "At the end we do share our advanced paid programs for people who want to go deeper. The 3 hours of teaching and the live build happen regardless — you pay nothing to attend.",
   ],
 ];
 
@@ -420,7 +420,7 @@ function Landing() {
 
       {/* TRANSPARENCY (in place of fake proof) */}
       <Section>
-        <H2>Full transparency before you pay</H2>
+        <H2>Full transparency before you register</H2>
         <p className="mt-3 text-muted-foreground">
           This is a new public masterclass, so we're not going to paste screenshots of testimonials
           we don't have. Here's the honest picture instead:

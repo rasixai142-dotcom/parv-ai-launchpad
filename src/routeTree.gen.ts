@@ -13,9 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundRouteImport } from './routes/refund'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ApiPublicRegisterRouteImport } from './routes/api/public/register'
+import { Route as ApiPublicSheetsHealthRouteImport } from './routes/api/public/sheets-health'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,6 +39,11 @@ const RefundRoute = RefundRouteImport.update({
   path: '/refund',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -52,24 +59,33 @@ const ApiPublicRegisterRoute = ApiPublicRegisterRouteImport.update({
   path: '/api/public/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicSheetsHealthRoute = ApiPublicSheetsHealthRouteImport.update({
+  id: '/api/public/sheets-health',
+  path: '/api/public/sheets-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/settings': typeof SettingsRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/api/public/register': typeof ApiPublicRegisterRoute
+  '/api/public/sheets-health': typeof ApiPublicSheetsHealthRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/settings': typeof SettingsRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/api/public/register': typeof ApiPublicRegisterRoute
+  '/api/public/sheets-health': typeof ApiPublicSheetsHealthRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +93,11 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/settings': typeof SettingsRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/api/public/register': typeof ApiPublicRegisterRoute
+  '/api/public/sheets-health': typeof ApiPublicSheetsHealthRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +106,33 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy'
     | '/refund'
+    | '/settings'
     | '/terms'
     | '/thank-you'
     | '/api/public/register'
+    | '/api/public/sheets-health'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contact'
     | '/privacy'
     | '/refund'
+    | '/settings'
     | '/terms'
     | '/thank-you'
     | '/api/public/register'
+    | '/api/public/sheets-health'
   id:
     | '__root__'
     | '/'
     | '/contact'
     | '/privacy'
     | '/refund'
+    | '/settings'
     | '/terms'
     | '/thank-you'
     | '/api/public/register'
+    | '/api/public/sheets-health'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,9 +140,11 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundRoute: typeof RefundRoute
+  SettingsRoute: typeof SettingsRoute
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
   ApiPublicRegisterRoute: typeof ApiPublicRegisterRoute
+  ApiPublicSheetsHealthRoute: typeof ApiPublicSheetsHealthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -151,6 +177,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RefundRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -172,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicRegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/sheets-health': {
+      id: '/api/public/sheets-health'
+      path: '/api/public/sheets-health'
+      fullPath: '/api/public/sheets-health'
+      preLoaderRoute: typeof ApiPublicSheetsHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -180,9 +220,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
   RefundRoute: RefundRoute,
+  SettingsRoute: SettingsRoute,
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
   ApiPublicRegisterRoute: ApiPublicRegisterRoute,
+  ApiPublicSheetsHealthRoute: ApiPublicSheetsHealthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

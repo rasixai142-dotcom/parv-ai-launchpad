@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Loader2 } from "lucide-react";
-import { useServerFn } from "@tanstack/react-start";
-import { saveRegistration } from "@/lib/registrations.functions";
 import { trackPixel } from "@/lib/pixel";
 import { SITE } from "@/lib/site";
 
 const PROFESSIONS = ["Student", "Working Professional", "Freelancer", "Business Owner", "Other"];
 
 export function RegistrationModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const submit = useServerFn(saveRegistration);
   const [name, setName] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [profession, setProfession] = useState("");
@@ -37,13 +34,31 @@ export function RegistrationModal({ open, onClose }: { open: boolean; onClose: (
 
     setLoading(true);
     try {
-      await submit({ data: { name: trimmedName, whatsapp: digits, profession } });
+      const res = await fetch("/api/public/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: trimmedName, whatsapp: digits, profession }),
+      });
+      const raw = await res.text();
+      let parsed: { ok?: boolean; error?: string } = {};
+      try {
+        parsed = JSON.parse(raw) as typeof parsed;
+      } catch {
+        parsed = { error: raw.slice(0, 200) };
+      }
+      if (!res.ok || !parsed.ok) {
+        const detail = parsed.error || `HTTP ${res.status}`;
+        console.error("[registration] submit failed:", res.status, raw);
+        throw new Error(detail);
+      }
       // Fires only after a successful save
       trackPixel("Lead");
       onClose();
       window.open(SITE.whatsappCommunity, "_blank", "noopener,noreferrer");
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err) {
+      const detail = err instanceof Error ? err.message : String(err);
+      console.error("[registration] error:", err);
+      setError(`Could not save your registration. ${detail}`);
     } finally {
       setLoading(false);
     }

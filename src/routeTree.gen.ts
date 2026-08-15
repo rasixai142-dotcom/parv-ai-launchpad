@@ -15,6 +15,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as ApiPublicRegisterRouteImport } from './routes/api/public/register'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
   path: '/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicRegisterRoute = ApiPublicRegisterRouteImport.update({
+  id: '/api/public/register',
+  path: '/api/public/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/refund': typeof RefundRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/api/public/register': typeof ApiPublicRegisterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/refund': typeof RefundRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/api/public/register': typeof ApiPublicRegisterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +79,27 @@ export interface FileRoutesById {
   '/refund': typeof RefundRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/api/public/register': typeof ApiPublicRegisterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/privacy' | '/refund' | '/terms' | '/thank-you'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/privacy'
+    | '/refund'
+    | '/terms'
+    | '/thank-you'
+    | '/api/public/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/privacy' | '/refund' | '/terms' | '/thank-you'
+  to:
+    | '/'
+    | '/contact'
+    | '/privacy'
+    | '/refund'
+    | '/terms'
+    | '/thank-you'
+    | '/api/public/register'
   id:
     | '__root__'
     | '/'
@@ -85,6 +108,7 @@ export interface FileRouteTypes {
     | '/refund'
     | '/terms'
     | '/thank-you'
+    | '/api/public/register'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +118,7 @@ export interface RootRouteChildren {
   RefundRoute: typeof RefundRoute
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
+  ApiPublicRegisterRoute: typeof ApiPublicRegisterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -140,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/register': {
+      id: '/api/public/register'
+      path: '/api/public/register'
+      fullPath: '/api/public/register'
+      preLoaderRoute: typeof ApiPublicRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -150,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   RefundRoute: RefundRoute,
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
+  ApiPublicRegisterRoute: ApiPublicRegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
